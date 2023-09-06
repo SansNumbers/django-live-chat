@@ -1,0 +1,16 @@
+{% extends 'core/base.html' %}
+
+{% block content %}
+    <h1>Rooms</h1>
+
+    <div class="d-flex flex-row">
+        {% for room in rooms %}
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="card-title">{{ room.name }}</h5>
+                <a href="{% url 'room' room.slug %}" class="btn btn-primary">Join</a>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

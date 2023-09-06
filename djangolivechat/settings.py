@@ -13,6 +13,9 @@ ALLOWED_HOSTS = [
     'localhost'
 ]
 
+LOGOUT_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/rooms/'
+LOGIN_URL = '/login/'
 
 # Application definition
 # Default apps
@@ -26,7 +29,11 @@ DEFAULT_APPS = [
 ]
 
 # Custom apps configs
-CUSTOM_APPS = []
+CUSTOM_APPS = [
+    'apps.core.apps.CoreConfig',
+    'apps.room.apps.RoomConfig',
+    'apps.message.apps.MessageConfig',
+]
 
 # External apps
 EXTERNAL_APPS = [
@@ -65,6 +72,14 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'djangolivechat.wsgi.application'
+ASGI_APPLICATION = 'djangolivechat.asgi.application'
+
+CHANNEL_LAYERS = {
+    "default": {
+        "BACKEND": "channels.layers.InMemoryChannelLayer"
+    }
+}
+
 
 DATABASES = {
     'default': {
